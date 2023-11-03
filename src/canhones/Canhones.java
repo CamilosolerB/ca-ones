@@ -15,7 +15,10 @@ public class Canhones {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Vista view = new Vista();
+        view.setVisible(true);
+        view.setTitle("Ejercicio de cañones");
+        view.setLocationRelativeTo(null);
     }
     
 }
