@@ -17,7 +17,9 @@ import javax.swing.JOptionPane;
  */
 public class Vista extends javax.swing.JFrame {
     
-    Graphics g;
+    //Graphics g;
+    int scoreB = 0;
+    int scoreN = 0;
     
     @Override
     public void paint(Graphics g){
@@ -62,13 +64,17 @@ public class Vista extends javax.swing.JFrame {
         CanonNegro canonN = new CanonNegro(angleN, velIniN);
         CanonBlanco canonB = new CanonBlanco(angleB, velIniB);
         System.out.println("Cañon blanco 1");
-        canonB.graphTiro(plano, 80, 75);
+        int canon1B = canonB.graphTiro(plano, 80, 75);
         System.out.println("Cañon blanco 2");
-        canonB.graphTiro(plano, 170, 75);
+        int canon2B = canonB.graphTiro(plano, 170, 75);
         System.out.println("Cañon negro 1");
-        canonN.graphTiro(plano, 640, 80);
+        int canon1N = canonN.graphTiro(plano, 640, 80);
         System.out.println("Cañon negro 2");
-        canonN.graphTiro(plano, 740, 80);
+        int canon2N = canonN.graphTiro(plano, 740, 80);
+        scoreB = canon1B + canon2B;
+        scoreN = canon1N + canon2N;
+        disparoB.setText(""+scoreB);
+        disparoN.setText(""+scoreN);
     }
     public Vista() {
         initComponents();
@@ -173,8 +179,8 @@ public class Vista extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(disparoN)
-                                    .addComponent(jLabel5))))
+                                    .addComponent(jLabel5)
+                                    .addComponent(disparoN, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 28, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 67, Short.MAX_VALUE)
@@ -261,22 +267,18 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(disparoB, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anguloB, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(anguloB, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jLabel16))
-                            .addComponent(VelInicialB, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel22))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(disparoB)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel16))
+                    .addComponent(VelInicialB, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel22))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                     .addContainerGap(68, Short.MAX_VALUE)
