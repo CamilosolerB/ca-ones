@@ -59,10 +59,16 @@ public class Vista extends javax.swing.JFrame {
         int velIniN = Integer.parseInt(VelInicialN.getText());
         int angleB = Integer.parseInt(anguloB.getText());
         int angleN = Integer.parseInt(anguloN.getText());
-        Canon canonN = new Canon(angleN, velIniN);
-        Canon canonB = new Canon(angleN, velIniN);
-        canonN.graphTiro(plano, 0, 0);
-        canonB.graphTiro(plano, 50, 100);
+        CanonNegro canonN = new CanonNegro(angleN, velIniN);
+        CanonBlanco canonB = new CanonBlanco(angleB, velIniB);
+        System.out.println("Cañon blanco 1");
+        canonB.graphTiro(plano, 80, 75);
+        System.out.println("Cañon blanco 2");
+        canonB.graphTiro(plano, 170, 75);
+        System.out.println("Cañon negro 1");
+        canonN.graphTiro(plano, 640, 80);
+        System.out.println("Cañon negro 2");
+        canonN.graphTiro(plano, 740, 80);
     }
     public Vista() {
         initComponents();
@@ -310,19 +316,19 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/canhones/canon (1).png"))); // NOI18N
         jLabel9.setText("jLabel7");
-        plano.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 110, 100));
+        plano.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 90, 90));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/canhones/canon (1).png"))); // NOI18N
         jLabel10.setText("jLabel7");
-        plano.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, 110, 100));
+        plano.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, 90, 100));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/canhones/canon (2).png"))); // NOI18N
         jLabel11.setText("jLabel7");
-        plano.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 440, 100, 100));
+        plano.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 440, 90, 100));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/canhones/canon (2).png"))); // NOI18N
         jLabel12.setText("jLabel7");
-        plano.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 440, 100, 100));
+        plano.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 440, 90, 100));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/canhones/campo.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
