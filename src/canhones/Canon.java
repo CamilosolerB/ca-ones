@@ -12,6 +12,7 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -26,9 +27,9 @@ public class Canon {
         this.angulo = angulo;
         this.velInicial = velInicial;
     }
-    public void graphTiro(Graphics g, int x0, int y0){
-        Graphics2D g2d = (Graphics2D) g;
-
+    public void graphTiro(JPanel panel, int x0, int y0){
+        Graphics g = panel.getGraphics();
+        g.clearRect(0, 0, panel.getWidth(), panel.getHeight());
         int numPuntos = 100; // Número de puntos a calcular
         double deltaT = 0.1; // Intervalo de tiempo
 
@@ -37,8 +38,11 @@ public class Canon {
             double x = x0 + velInicial * Math.cos(angulo) * t;
             double y = y0 + velInicial * Math.sin(angulo) * t - 0.5 * gravedad * t * t;
 
-            Point2D punto = new Point2D.Double(x, y);
-            g2d.draw(new Line2D.Double(punto, punto)); // Dibuja un punto en la posición (x, y)
+            int pixelX = (int) x;
+            int pixelY = panel.getHeight() - (int) y; // Invierte la coordenada Y
+
+            g.setColor(Color.BLACK);
+            g.drawLine(pixelX, pixelY, pixelX, pixelY);
         }
     }
 }

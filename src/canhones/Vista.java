@@ -17,6 +17,8 @@ import javax.swing.JOptionPane;
  */
 public class Vista extends javax.swing.JFrame {
     
+    Graphics g;
+    
     @Override
     public void paint(Graphics g){
         super.paint(g);
@@ -28,13 +30,6 @@ public class Vista extends javax.swing.JFrame {
         linea2.graphLinea(g);
         linea3.graphLinea(g);
     }
-
-    protected void paintComponent(Graphics g) {
-        super.paintComponents(g);
-        Canon canon1 = new Canon(angulo, velIni);
-        canon1.graphTiro(g, 200, 0);
-    }
-
     public int[][] ubicacionMuros() {
         int[][] dimensiones = new int[3][4];
         String valores;
@@ -56,6 +51,18 @@ public class Vista extends javax.swing.JFrame {
             }
         }
         return dimensiones;
+    }
+    
+    
+    public void disparo(){
+        int velIniB = Integer.parseInt(VelInicialB.getText());
+        int velIniN = Integer.parseInt(VelInicialN.getText());
+        int angleB = Integer.parseInt(anguloB.getText());
+        int angleN = Integer.parseInt(anguloN.getText());
+        Canon canonN = new Canon(angleN, velIniN);
+        Canon canonB = new Canon(angleN, velIniN);
+        canonN.graphTiro(plano, 0, 0);
+        canonB.graphTiro(plano, 50, 100);
     }
     public Vista() {
         initComponents();
@@ -336,7 +343,7 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_anguloNActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    disparo();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void VelInicialBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VelInicialBActionPerformed
@@ -348,10 +355,7 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_anguloBActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        int velIniB = Integer.parseInt(VelInicialB.getText());
-        int velIniN = Integer.parseInt(VelInicialN.getText());
-        int angleB = Integer.parseInt(anguloB.getText());
-        int angleN = Integer.parseInt(anguloN.getText());
+        disparo();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
