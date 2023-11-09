@@ -24,11 +24,11 @@ public class CanonBlanco extends Canon{
         int grosor = 5;
         int numPuntos = 100;
         double deltaT = 0.1;
-
+        System.out.println("primera linea "+view.primeraLinea[0]+" "+view.primeraLinea[1]+" "+view.primeraLinea[2]);
         for (int i = 0; i < numPuntos; i++) {
             double t = i * deltaT;
-            double x = x0 + velInicial * Math.cos(Math.toRadians(angulo)) * t;
-            double y = y0 + velInicial * Math.sin(Math.toRadians(angulo)) * t - (gravedad * t * t)/2;
+            int x = (int)(x0 + velInicial * Math.cos(Math.toRadians(angulo)) * t);
+            int y = (int)(y0 + velInicial * Math.sin(Math.toRadians(angulo)) * t - (gravedad * t * t)/2);
             if(x <= 0 || y <=0){
                 break;
             }
@@ -36,23 +36,15 @@ public class CanonBlanco extends Canon{
                 score++;
                 break;
             }
-            if(x == view.primeraLinea[0] && y > view.primeraLinea[1] && y < view.primeraLinea[2]){
+            System.out.print("Posicion en el tiempo: "+t+" s: "+x+"m I + "+y+"m J");
+            if (tocaLinea(x, y, view.primeraLinea) || tocaLinea(x, y, view.segundaLinea) || tocaLinea(x, y, view.terceraLinea)) {
                 break;
             }
-            if(x == view.segundaLinea[0] && y > view.segundaLinea[1] && y < view.segundaLinea[2]){
-                break;
-            }
-            if(x == view.terceraLinea[0] && y > view.terceraLinea[1] && y < view.terceraLinea[2]){
-                break;
-            }
-            System.out.println("Posicion en el tiempo: "+t+" s: "+x+"m I + "+y+"m J");
-
             int pixelX = (int) x;
-            int pixelY = panel.getHeight() - (int) y; // Invierte la coordenada Y
-
+            int pixelY = panel.getHeight() - (int) y;
             g.setColor(Color.BLACK);
             g.drawLine(pixelX, pixelY, pixelX, pixelY);
-            int radio = grosor / 2; // Calcula el radio a partir del grosor
+            int radio = grosor / 2;
             g.fillOval(pixelX - radio, pixelY - radio, grosor, grosor);
         }
         return score;

@@ -20,9 +20,9 @@ public class Vista extends javax.swing.JFrame {
     //Graphics g;
     int scoreB = 0;
     int scoreN = 0;
-    int[] primeraLinea = new int[3];
-    int[] segundaLinea = new int[3];
-    int[] terceraLinea = new int[3];
+    public static int[] primeraLinea = new int[3];
+    public static int[] segundaLinea = new int[3];
+    public static int[] terceraLinea = new int[3];
     
     @Override
     public void paint(Graphics g){

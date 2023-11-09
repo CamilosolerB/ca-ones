@@ -28,7 +28,7 @@ public class Wall {
         g2d.setColor(Color.black);
         g2d.setStroke(new BasicStroke(5));
         g2d.drawLine(x1, y1, x1, y2);
-        int[] coordenadas = {x1,y1,y2};
+        int[] coordenadas = {(x1-300),(570-y1),(570-y2)};
         return coordenadas;
     }
 }

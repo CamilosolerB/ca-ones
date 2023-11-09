@@ -27,8 +27,8 @@ public class CanonNegro extends Canon{
 
         for (int i = 0; i < numPuntos; i++) {
             double t = i * deltaT;
-            double x = x0 + velInicial * Math.cos(Math.toRadians(180-angulo)) * t;
-            double y = y0 + velInicial * Math.sin(Math.toRadians(180-angulo)) * t - (gravedad * t * t)/2;
+            int x = (int)(x0 + velInicial * Math.cos(Math.toRadians(180-angulo)) * t);
+            int y = (int)(y0 + velInicial * Math.sin(Math.toRadians(180-angulo)) * t - (gravedad * t * t)/2);
             if(x <= 0 || y <=0){
                 break;
             }
@@ -36,17 +36,10 @@ public class CanonNegro extends Canon{
                 score++;
                 break;
             }
-            if(x == view.primeraLinea[0] && y > view.primeraLinea[1] && y < view.primeraLinea[2]){
-                break;
-            }
-            if(x == view.segundaLinea[0] && y > view.segundaLinea[1] && y < view.segundaLinea[2]){
-                break;
-            }
-            if(x == view.terceraLinea[0] && y > view.terceraLinea[1] && y < view.terceraLinea[2]){
-                break;
-            }
             System.out.println("Posicion en el tiempo: "+t+" s: "+x+"m I + "+y+"m J");
-
+            if (tocaLinea(x, y, view.primeraLinea) || tocaLinea(x, y, view.segundaLinea) || tocaLinea(x, y, view.terceraLinea)) {
+                break;
+            }
             int pixelX = (int) x;
             int pixelY = panel.getHeight() - (int) y; // Invierte la coordenada Y
 

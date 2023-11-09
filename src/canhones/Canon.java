@@ -28,5 +28,8 @@ public class Canon {
         this.angulo = angulo;
         this.velInicial = velInicial;
     }
+    protected boolean tocaLinea(double x, double y, int[] linea) {
+        return (Math.abs(x - linea[0]) <= 10) && (y < linea[1]) && (y > linea[2]);
+    }
 
 }
