@@ -22,6 +22,7 @@ public class Canon {
     protected float angulo;
     protected float velInicial;
     float gravedad = 9.8f;
+    Vista view = new Vista();
 
     public Canon(float angulo, float velInicial) {
         this.angulo = angulo;

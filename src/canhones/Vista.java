@@ -20,32 +20,34 @@ public class Vista extends javax.swing.JFrame {
     //Graphics g;
     int scoreB = 0;
     int scoreN = 0;
+    int[] primeraLinea = new int[3];
+    int[] segundaLinea = new int[3];
+    int[] terceraLinea = new int[3];
     
     @Override
     public void paint(Graphics g){
         super.paint(g);
         int[][] ubicacion = ubicacionMuros();
-        Wall linea1 = new Wall(ubicacion[0][0], ubicacion[0][1], ubicacion[0][2], ubicacion[0][3]);
-        Wall linea2 = new Wall(ubicacion[1][0], ubicacion[1][1], ubicacion[1][2], ubicacion[1][3]);
-        Wall linea3 = new Wall(ubicacion[2][0], ubicacion[2][1], ubicacion[2][2], ubicacion[2][3]);
-        linea1.graphLinea(g);
-        linea2.graphLinea(g);
-        linea3.graphLinea(g);
+        Wall linea1 = new Wall(ubicacion[0][0], ubicacion[0][1], ubicacion[0][2]);
+        Wall linea2 = new Wall(ubicacion[1][0], ubicacion[1][1], ubicacion[1][2]);
+        Wall linea3 = new Wall(ubicacion[2][0], ubicacion[2][1], ubicacion[2][2]);
+        primeraLinea = linea1.graphLinea(g);
+        segundaLinea = linea2.graphLinea(g);
+        terceraLinea = linea3.graphLinea(g);
     }
     public int[][] ubicacionMuros() {
-        int[][] dimensiones = new int[3][4];
+        int[][] dimensiones = new int[3][3];
         String valores;
         JOptionPane.showMessageDialog(null, "Bienvenido, para trazar las dimensiones, separe por coma al ingresar los valores\n"
                 + "y anote las coordenadas en el siguiente orden:\n"
-                + "1. Posición inicial en X\n"
+                + "1. Posición de la linea en X\n"
                 + "2. Posición inicial en Y\n"
-                + "3. Posición final en X\n"
                 + "4. Posición final en Y");
         for (int i = 0; i < dimensiones.length; i++) {
             valores = JOptionPane.showInputDialog("Indique las coordenadas para el muro " + (i + 1));
             String[] partes = valores.split(",");
-            if (partes.length == 4) {
-                for (int j = 0; j < 4; j++) {
+            if (partes.length == 3) {
+                for (int j = 0; j < 3; j++) {
                     dimensiones[i][j] = Integer.parseInt(partes[j].trim());
                 }
             } else {

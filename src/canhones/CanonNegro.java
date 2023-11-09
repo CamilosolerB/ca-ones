@@ -36,6 +36,15 @@ public class CanonNegro extends Canon{
                 score++;
                 break;
             }
+            if(x == view.primeraLinea[0] && y > view.primeraLinea[1] && y < view.primeraLinea[2]){
+                break;
+            }
+            if(x == view.segundaLinea[0] && y > view.segundaLinea[1] && y < view.segundaLinea[2]){
+                break;
+            }
+            if(x == view.terceraLinea[0] && y > view.terceraLinea[1] && y < view.terceraLinea[2]){
+                break;
+            }
             System.out.println("Posicion en el tiempo: "+t+" s: "+x+"m I + "+y+"m J");
 
             int pixelX = (int) x;
